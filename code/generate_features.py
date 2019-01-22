@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 import numpy as np
 import pandas as pd
 import math
@@ -537,12 +539,10 @@ df = pd.merge(df, merchant_df, on=['Merchant_id'], how='left')
 df = pd.merge(df, coupon_df, on=['Coupon_id'], how='left')
 
 user_merchant_df = user_merchant_df.drop(['User_receive_count', 'User_used_count', 'Merchant_receive_count', 'Merchant_used_count'], axis=1)
-user_merchant_df.info()
 
 df = pd.merge(df, user_merchant_df, on=['User_id', 'Merchant_id'], how='left')
 
 user_online_df = user_online_df.drop(['User_receive_count', 'User_consume_count', 'User_used_count', 'User_not_used_count'], axis=1)
-user_online_df.info()
 
 df = pd.merge(df, user_online_df, on=['User_id'], how='left')
 df = df.fillna(0)
